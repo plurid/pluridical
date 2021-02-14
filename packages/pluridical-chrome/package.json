@@ -1,0 +1,82 @@
+{
+    "name": "@plurid/pluridical-chrome",
+    "version": "0.0.0-0",
+    "description": "explore web sites as a 3D structure",
+    "keywords": [
+        "plurid"
+    ],
+    "author": "ly3xqhl8g9 <ly3xqhl8g9@plurid.com> (https://plurid.com)",
+    "license": "SEE LICENSE IN LICENSE",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/plurid/pluridical"
+    },
+    "bugs": {
+        "email": "source@plurid.com",
+        "url": "https://github.com/plurid/pluridical/issues"
+    },
+    "homepage": "https://github.com/plurid/pluridical/tree/master/packages/pluridical-chrome",
+    "files": [
+        "distribution/"
+    ],
+    "scripts": {
+        "e2e-test": "jest __e2e-tests__ --runInBand --silent",
+        "unit-test": "jest __tests__/.*.spec.js --silent",
+        "test": "npm run unit-test && npm run e2e-test",
+        "test.jest": "jest",
+        "test.production": "NODE_ENV=production npm run unit-test && npm run e2e-test",
+        "lint": "eslint --quiet -f codeframe src",
+        "clean": "rm -rf build && rm -rf build-zip",
+        "build.development": "yarn clean && NODE_ENV=development webpack --config ./scripts/webpack.config.js",
+        "build.production": "yarn clean && NODE_ENV=production webpack --config ./scripts/webpack.config.js",
+        "distribute": "yarn build.production && node scripts/zip.js"
+    },
+    "dependencies": {
+        "@plurid/plurid-data": "^0.0.0-0",
+        "@plurid/plurid-engine": "^0.0.0-0",
+        "@plurid/plurid-functions": "^0.0.0-0",
+        "@plurid/plurid-functions-react": "^0.0.0-0",
+        "@plurid/plurid-icons-react": "^0.0.0-0",
+        "@plurid/plurid-pubsub": "^0.0.0-0",
+        "@plurid/plurid-react": "^0.0.0-0",
+        "@plurid/plurid-themes": "^0.0.0-0",
+        "@plurid/plurid-ui-components-react": "^0.0.0-0",
+        "@plurid/plurid-ui-state-react": "^0.0.0-0",
+        "apollo-cache-inmemory": "^1.6.6",
+        "apollo-client": "^2.6.10",
+        "apollo-link-http": "^1.5.17",
+        "graphql": "^15.4.0",
+        "graphql-tag": "^2.11.0",
+        "hammerjs": "^2.0.8",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "react-redux": "^7.2.2",
+        "redux": "^4.0.5",
+        "redux-thunk": "^2.3.0",
+        "styled-components": "^5.2.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.12.10",
+        "@babel/preset-env": "^7.12.10",
+        "@babel/preset-react": "^7.12.10",
+        "@babel/preset-typescript": "^7.12.7",
+        "@babel/register": "^7.12.10",
+        "@types/chrome": "^0.0.126",
+        "@types/jest": "^26.0.19",
+        "@types/node": "^14.14.12",
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0",
+        "@types/styled-components": "^5.1.5",
+        "copy-webpack-plugin": "^7.0.0",
+        "css-loader": "^5.0.1",
+        "html-webpack-plugin": "^4.5.0",
+        "jest": "^26.6.3",
+        "redux-devtools-extension": "^2.13.8",
+        "ts-jest": "^26.4.4",
+        "ts-loader": "^8.0.12",
+        "typescript": "^4.1.2",
+        "webpack": "^5.10.0",
+        "webpack-cli": "^4.2.0",
+        "zip-folder": "^1.0.0"
+    }
+}
