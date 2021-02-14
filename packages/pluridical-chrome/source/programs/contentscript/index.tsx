@@ -34,6 +34,10 @@ const injectPlurid = () => {
     root.id = rootId;
     document.body.appendChild(root);
 
+
+    const iframeRendering = false;
+
+
     ReactDOM.render(
         <PluridApplication
             planes={[
@@ -45,12 +49,36 @@ const injectPlurid = () => {
                             const node = useRef<HTMLDivElement | null>(null);
 
                             useEffect(() => {
+                                if (iframeRendering) {
+                                    return;
+                                }
+
                                 if (!node.current) {
                                     return;
                                 }
 
                                 node.current.appendChild(wrapper);
                             }, []);
+
+
+                            // TODO
+                            // Default render as div wrapping
+                            // give to the user the possibility of reloading the webpage
+                            // in an iframe for better styles/functionality integration on non-standard pages.
+
+                            if (iframeRendering) {
+                                return (
+                                    <iframe
+                                        src={document.URL}
+                                        style={{
+                                            width: '100%',
+                                            height: '900px',
+                                            outline: 'none',
+                                            border: 'none',
+                                        }}
+                                    />
+                                )
+                            }
 
                             return (
                                 <div
